@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>zeplin.com.tr</title>
+
+<link rel="icon" type="image/x-icon" href="pfp.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', Arial, sans-serif;
+        text-align: center;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.light {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    body.dark {
+        background: #0d0d0d;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-top: 180px;
+    }
+
+    .title {
+        font-size: 34px;
+        font-weight: 600;
+        margin-bottom: 70px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+
+    .fade {
+        opacity: 0;
+    }
+
+    a {
+        display: block;
+        margin: 12px 0;
+        font-size: 16px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    body.light a { color: #0066ff; }
+    body.dark a { color: #4da3ff; }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="title" id="title">Arda.jvm</div>
+
+    <a href="https://xyproblem.info/" target="_blank">XY PROBLEM</a>
+    <a href="https://dontasktoask.com/" target="_blank">DON'T ASK TO ASK</a>
+    <a href="https://nohello.net/tr/" target="_blank">NO HELLO</a>
+</div>
+
+<script>
+const hour = new Date().getHours();
+
+if (hour >= 7 && hour < 19) {
+    document.body.classList.add("light");
+} else {
+    document.body.classList.add("dark");
+}
+
+const langs = [
+    "jvm","go","c","py","cpp","rs","js","ts","kt","scala",
+    "cs","swift","dart","rb","asm","sh","elixir","clj","nim"
+];
+
+let i = 0;
+const el = document.getElementById("title");
+
+setInterval(() => {
+    el.classList.add("fade");
+
+    setTimeout(() => {
+        i = (i + 1) % langs.length;
+        el.textContent = "Arda." + langs[i];
+        el.classList.remove("fade");
+    }, 500);
+
+}, 1400);
+</script>
+
+</body>
+</html>
